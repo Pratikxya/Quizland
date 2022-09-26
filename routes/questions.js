@@ -13,7 +13,6 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   const question = new QuestionModel({
-    id: req.body.id,
     title: req.body.title,
     description: req.body.description,
     media: req.body.media,
