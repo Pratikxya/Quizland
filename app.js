@@ -1,4 +1,5 @@
 import express from "express";
+import mongoose from "mongoose";
 
 const app = express();
 
@@ -11,3 +12,10 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
 });
+
+//Connect to MongoDB
+mongoose.connect(
+  process.env.DB_CONNECTION,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  () => console.log("Connected to DB !")
+);
