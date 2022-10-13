@@ -56,4 +56,20 @@ router.delete("/:quizId", async (req, res) => {
   }
 });
 
+router.patch("/:quizId", async (req, res) => {
+  try {
+    const updatedQuiz = await QuizModel.findById(req.params.quizId);
+    updatedQuiz.title = req.body.title;
+    updatedQuiz.category = req.body.category;
+    updatedQuiz.createdOn = req.body.createdOn;
+    updatedQuiz.createdBy = req.body.createdBy;
+    updatedQuiz.isPublic = req.body.isPublic;
+    const savedQuiz = await updatedQuiz.save();
+    res.json(savedQuiz);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: err.message });
+  }
+});
+
 export default router;
