@@ -44,4 +44,16 @@ router.get("/:quizId", async (req, res) => {
   }
 });
 
+router.delete("/:quizId", async (req, res) => {
+  try {
+    const removedQuiz = await QuizModel.remove({
+      _id: req.params.quizId,
+    });
+    res.json({ message: "Deleted Succesfully" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: err.message });
+  }
+});
+
 export default router;
