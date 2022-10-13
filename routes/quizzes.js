@@ -32,4 +32,16 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.get("/:quizId", async (req, res) => {
+  try {
+    const quiz = await QuizModel.findById(req.params.quizId).populate({
+      path: "questions",
+    });
+    res.json(quiz);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: err.message });
+  }
+});
+
 export default router;
