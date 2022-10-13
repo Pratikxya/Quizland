@@ -10,16 +10,9 @@ const QuizSchema = mongoose.Schema({
     required: true,
   },
   createdOn: {
-    type: DateTime,
+    type: Date,
     required: true,
   },
-
-  questions: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Questions",
-    },
-  ],
   createdBy: {
     type: String,
     required: true,
@@ -28,6 +21,12 @@ const QuizSchema = mongoose.Schema({
     type: Boolean,
     required: true,
   },
+  questions: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Questions",
+    },
+  ],
 });
 
 const quizModel = mongoose.model("Quizzes", QuizSchema);

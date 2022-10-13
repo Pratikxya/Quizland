@@ -10,9 +10,11 @@ app.use(json());
 
 //Import Routes
 import questionsRoute from "./routes/questions.js";
+import quizzesRoute from "./routes/quizzes.js";
 
 //Route Middlewares
 app.use("/questions", questionsRoute);
+app.use("/quizzes", quizzesRoute);
 
 //ROUTES
 app.get("/", (req, res) => {

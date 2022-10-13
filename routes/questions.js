@@ -7,7 +7,8 @@ router.get("/", async (req, res) => {
     const questions = await QuestionModel.find();
     res.json(questions);
   } catch (err) {
-    res.json({ message: err });
+    console.log(err);
+    res.status(500).json({ message: err.message });
   }
 });
 
@@ -22,7 +23,8 @@ router.post("/", async (req, res) => {
     const savedQuestion = await question.save();
     res.json(savedQuestion);
   } catch (err) {
-    res.json({ message: err });
+    console.log(err);
+    res.status(500).json({ message: err.message });
   }
 });
 
@@ -31,7 +33,8 @@ router.get("/:questionId", async (req, res) => {
     const question = await QuestionModel.findById(req.params.questionId);
     res.json(question);
   } catch (err) {
-    res.json({ message: err });
+    console.log(err);
+    res.status(500).json({ message: err.message });
   }
 });
 
@@ -42,7 +45,8 @@ router.delete("/:questionId", async (req, res) => {
     });
     res.json(removedQuestion);
   } catch (err) {
-    res.json({ message: err });
+    console.log(err);
+    res.status(500).json({ message: err.message });
   }
 });
 
@@ -54,7 +58,8 @@ router.patch("/:questionId", async (req, res) => {
     );
     res.json(updatedQuestion);
   } catch (err) {
-    res.json({ message: err });
+    console.log(err);
+    res.status(500).json({ message: err.message });
   }
 });
 
